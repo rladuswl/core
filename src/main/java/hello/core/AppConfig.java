@@ -9,10 +9,12 @@ import hello.core.order.OrderServiceImpl;
 
 public class AppConfig {
 
+    // 구현 클래스 선택해서 주입해주기
     public MemberService memberService() {
         return new MemberServiceImpl(new MemoryMemberRepository());
     }
 
+    // 구현 클래스 선택해서 주입해주기
     public OrderService orderService() {
         return new OrderServiceImpl(new MemoryMemberRepository(), new FixDiscountPolicy());
     }
