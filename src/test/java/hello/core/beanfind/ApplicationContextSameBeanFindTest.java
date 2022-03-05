@@ -41,7 +41,7 @@ public class ApplicationContextSameBeanFindTest {
     void findAllBeanByType() {
         Map<String, MemberRepository> beansOfType = ac.getBeansOfType(MemberRepository.class);  // 타입이 Map 으로 나온다
         for (String key : beansOfType.keySet()) {
-            System.out.println("key = " + key + "value = " + beansOfType.get(key));
+            System.out.println("key = " + key + " value = " + beansOfType.get(key));
         }
         System.out.println("beansOfType = " + beansOfType);
         assertThat(beansOfType.size()).isEqualTo(2);
