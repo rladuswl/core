@@ -8,6 +8,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 class ApplicationContextInfoTest {
 
+    // .getBeanDefinition() 은 AnnotationConfigApplicationContext 타입에서만 사용 가능
+    // AnnotationConfigApplicationContext의 부모 클래스인 GenericApplicationContext에서 상속받은 메소드라서 인터페이스인 ApplicationContext는 타입으로 사용 불가
     AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
 
     @Test
