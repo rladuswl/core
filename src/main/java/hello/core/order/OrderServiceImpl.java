@@ -29,4 +29,9 @@ public class OrderServiceImpl implements OrderService {
 
         return new Order(memberId, itemName, itemPrice, discountPrice);
     }
+
+    // AppConfig에서 싱글톤 깨지는지 테스트 용도
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
 }
