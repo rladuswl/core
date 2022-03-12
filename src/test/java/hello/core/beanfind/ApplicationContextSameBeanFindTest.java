@@ -24,7 +24,7 @@ public class ApplicationContextSameBeanFindTest {
     @Test
     @DisplayName("타입으로 조회시 같은 타입이 둘 이상 있으면, 중복 오류가 발생한다")
     void findBeanByTypeDuplicate() {
-        MemberRepository bean = ac.getBean(MemberRepository.class);  // 중복 예외 터질 것임
+//        MemberRepository bean = ac.getBean(MemberRepository.class);  // 중복 예외 터질 것임
         assertThrows(NoUniqueBeanDefinitionException.class,
                 () -> ac.getBean(MemberRepository.class));
     }
