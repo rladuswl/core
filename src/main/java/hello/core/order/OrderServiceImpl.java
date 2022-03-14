@@ -17,7 +17,7 @@ public class OrderServiceImpl implements OrderService {
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy; // final은 값을 무조건 할당해야함, 구현체에 의존하지 않고 역할(인터페이스)에만 의존하는 중
 
-    @Autowired // 컴포넌트 스캔과 의존관계 자동 주입
+    @Autowired // 컴포넌트 스캔과 의존관계 자동 주입, 생성자가 딱 1개 있을 때는 @Autowired 생략 가능
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
