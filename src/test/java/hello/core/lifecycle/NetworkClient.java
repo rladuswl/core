@@ -3,7 +3,10 @@ package hello.core.lifecycle;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
-public class NetworkClient implements InitializingBean, DisposableBean {
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+public class NetworkClient { // implements InitializingBean->afterPropertiesSet() 메서드로 초기화 지원, DisposableBean->destroy() 메서드로 소멸을 지원 ===> 이 인터페이스들은 스프링 전용 인터페이스
 
     private String url;
 
@@ -19,7 +22,7 @@ public class NetworkClient implements InitializingBean, DisposableBean {
 
     // 서비스 시작시 호출
     public void connect() {
-        System.out.println("connect" + url);
+        System.out.println("connect " + url);
     }
 
     public void call(String message) {
@@ -31,16 +34,18 @@ public class NetworkClient implements InitializingBean, DisposableBean {
         System.out.println("close " + url);
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception { // afterPropertiesSet -> 의존관계 주입이 끝나면 호출한다는 의미
-        System.out.println("NetworkClient.afterPropertiesSet");
+    //@Override
+    @PostConstruct
+    public void init() throws Exception { // afterPropertiesSet -> 의존관계 주입이 끝나면 호출한다는 의미
+        System.out.println("NetworkClient.init");
         connect();
         call("초기화 연결 메시지");
     }
 
-    @Override
-    public void destroy() throws Exception {
-        System.out.println("NetworkClient.destroy");
+    //@Override
+    @PreDestroy
+    public void close() throws Exception {
+        System.out.println("NetworkClient.close");
         disconnect();
     }
 }
